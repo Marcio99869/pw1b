@@ -21,7 +21,7 @@ header {
     grid-area:cabecalho ;
 }
 main {
-    background-color: #e05da1;
+    background-color: #fffafd;
     grid-area:secao ;
 }
 aside {
