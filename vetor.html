@@ -1,0 +1,39 @@
+<button onclick="clique()">
+Clique aqui
+</button>
+<script>
+function clique()
+{
+
+    var nomes = [ "Wesley ", "Silas ", "Matheus", "Rodolfo", "Leandro", "Calero", "Jonathan", "Renan"]
+    //alert(nomes.length) 
+    //alert(nomes[5])
+    //document.write(nomes[0]+"<br>")
+    //document.write(nomes[1]+"<br>")
+    //document.write(nomes[3]+"<br>")
+    //document.write(nomes[4]+"<br>")
+   // document.write(nomes[5]+"<br>")
+    //document.write(nomes[6]+"<br>")
+    //document.write(nomes[7]+"<br>")
+    //for (var i = 0; i < nomes.length; i++ )
+    //{
+       // document.write(nomes[i]+"<br>")
+  //  }
+  alert (ObterNumeroAleatorio(100))
+  for (var i= 0; i< 5000; i++)
+  {
+      nomes.push(ObterNumeroAleatorio(1000))
+      document.write(nomes[i]+"<br>")
+  }
+}
+
+
+
+
+function ObterNumeroAleatorio(numeroMaximo)
+{
+    return Math.floor ( Math.random() * numeroMaximo)
+}
+
+
+</script>
