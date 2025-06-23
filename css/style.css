@@ -143,4 +143,18 @@ body {
   display: none;
 }
 
+.pokemon__type {
+  position: absolute;
+  top: 15%;  /* ele desce*/
+  right: 20%;
+  background-color: #ffffffcc;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: clamp(10px, 2vw, 0.9rem);
+  font-weight: 600;
+  color: #222;
+  box-shadow: 2px 2px 4px #00000055;
+  text-transform: capitalize;
+}
+
 

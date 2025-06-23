@@ -6,15 +6,12 @@ const form = document.querySelector('.form');
 const input = document.querySelector('.input__search');
 const buttonPrev = document.querySelector('.btn-prev');
 const buttonNext = document.querySelector('.btn-next');
- 
+
 const buttonMoves = document.querySelector('.btn-moves');
 const movesTable = document.querySelector('.moves-table');
 const movesTableBody = document.querySelector('.moves-table-body');
 
-
-
-
-
+const pokemonType = document.querySelector('.pokemon__type');
 
 let searchPokemon = 1;
 
@@ -25,21 +22,27 @@ const fetchPokemon = async (pokemon) => {
     const data = await APIResponse.json();
     return data;
   }
-}
+};
 
 const renderPokemon = async (pokemon) => {
   pokemonName.innerHTML = 'Loading...';
   pokemonNumber.innerHTML = '';
-  pokemonImage.style.display = 'none'; // Esconde a imagem inicialmente
+  pokemonImage.style.display = 'none'; // Esconde a imagem quando entramos
 
   const data = await fetchPokemon(pokemon);
 
   if (data) {
     pokemonName.innerHTML = data.name;
     pokemonNumber.innerHTML = `#${data.id}`;
-    
-    // Verifica se a imagem existe antes de definir a src
-    const sprite = data.sprites.versions['generation-v']['black-white']['animated']['front_default'] || 
+
+    // Exibir o tipo do Pokémon nessa merda
+    if (pokemonType) {
+      const types = data.types.map((typeInfo) => typeInfo.type.name);
+      pokemonType.innerHTML = `Tipo: ${types.join(' / ')}`;
+    }
+
+    // Verifica se a imagem existe antes de definir a src certa
+    const sprite = data.sprites.versions['generation-v']['black-white']['animated']['front_default'] ||
                    data.sprites.front_default;
 
     if (sprite) {
@@ -55,8 +58,9 @@ const renderPokemon = async (pokemon) => {
     pokemonImage.style.display = 'none';
     pokemonName.innerHTML = 'Not found :c';
     pokemonNumber.innerHTML = '';
+    pokemonType.innerHTML = 'Tipo: —';
   }
-}
+};
 
 buttonMoves.addEventListener('click', async () => {
   const data = await fetchPokemon(searchPokemon);
