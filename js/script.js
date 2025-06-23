@@ -6,6 +6,15 @@ const form = document.querySelector('.form');
 const input = document.querySelector('.input__search');
 const buttonPrev = document.querySelector('.btn-prev');
 const buttonNext = document.querySelector('.btn-next');
+ 
+const buttonMoves = document.querySelector('.btn-moves');
+const movesTable = document.querySelector('.moves-table');
+const movesTableBody = document.querySelector('.moves-table-body');
+
+
+
+
+
 
 let searchPokemon = 1;
 
@@ -48,6 +57,31 @@ const renderPokemon = async (pokemon) => {
     pokemonNumber.innerHTML = '';
   }
 }
+
+buttonMoves.addEventListener('click', async () => {
+  const data = await fetchPokemon(searchPokemon);
+
+  if (data) {
+    movesTableBody.innerHTML = ''; // limpa antes
+    const firstTenMoves = data.moves.slice(0, 10); // limitar para evitar exagero
+
+    firstTenMoves.forEach((moveEntry) => {
+      const moveName = moveEntry.move.name;
+      const levelLearned = moveEntry.version_group_details.find(
+        detail => detail.move_learn_method.name === 'level-up'
+      )?.level_learned_at || '—';
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${moveName}</td>
+        <td>${levelLearned}</td>
+      `;
+      movesTableBody.appendChild(row);
+    });
+
+    movesTable.classList.toggle('hidden'); // mostra/esconde
+  }
+});
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();

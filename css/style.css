@@ -93,3 +93,54 @@ body {
   box-shadow: inset -4px 4px 0 #222;
   font-size: 0.9rem;
 }
+
+.btn-moves {
+  position: absolute;
+  bottom: 17.5%; 
+  left: 50%;
+  width: 55%; 
+  padding: 3%;
+  transform: translate(-54%, 0); /* centraliza de forma mais natural */
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: clamp(8px, 5vw, 0.9rem);
+  font-weight: 600;
+  color: white;
+  background-color: #850035;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+  cursor: pointer;
+}
+
+
+.moves-table {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.9);
+  max-height: 200px;
+  overflow-y: auto;
+  width: 80%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+.moves-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.moves-table th,
+.moves-table td {
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
+
